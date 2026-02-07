@@ -2,12 +2,12 @@
 
 ## Last Updated: 2026-02-07
 
-## Current Phase: Phases 1-2 Complete, Phase 3 Blocked
+## Current Phase: ALL PHASES COMPLETE ✅
 
 ## Summary
-- **Total New Tools Added:** 14
-- **Total Tests:** 45 (all passing)
-- **Commits:** 6
+- **Total New Tools Added:** 18
+- **Total Tests:** 57 (all passing)
+- **Commits:** 8
 
 ## Completed Tools
 
@@ -33,14 +33,13 @@
 | `delete_transaction` | ✅ Complete | Remove a transaction |
 | `get_recurring_transactions` | ✅ Complete | View upcoming recurring transactions |
 
-### Phase 3: Rules (Requires User Interaction) 🔒
-| Task | Status | Notes |
-|------|--------|-------|
-| Research rules API | 🔒 BLOCKED | Requires browser network capture |
-| get_transaction_rules | 🔒 BLOCKED | Waiting for API research |
-| create_transaction_rule | 🔒 BLOCKED | Waiting for API research |
-| update_transaction_rule | 🔒 BLOCKED | Waiting for API research |
-| delete_transaction_rule | 🔒 BLOCKED | Waiting for API research |
+### Phase 3: Transaction Rules (Reverse-Engineered) ✅
+| Tool | Status | Description |
+|------|--------|-------------|
+| `get_transaction_rules` | ✅ Complete | List all auto-categorization rules |
+| `create_transaction_rule` | ✅ Complete | Create rule with merchant/amount conditions |
+| `update_transaction_rule` | ✅ Complete | Modify existing rule |
+| `delete_transaction_rule` | ✅ Complete | Remove a rule |
 
 ## Commits Made
 | # | Commit | Description |
@@ -51,38 +50,69 @@
 | 4 | 1c728bb | Add bulk_categorize_transactions tool |
 | 5 | 2a17bbe | Add tag tools: get_tags, set_transaction_tags, create_tag |
 | 6 | f94332e | Add search_transactions, get_transaction_details, delete_transaction, get_recurring_transactions |
+| 7 | 1d8b3d2 | Update STATUS.md with implementation progress |
+| 8 | c08e531 | Add transaction rules API tools (reverse-engineered) |
 
 ## Test Coverage
 - `tests/test_categories.py` - 6 tests
 - `tests/test_tags.py` - 9 tests
 - `tests/test_transactions.py` - 30 tests
-- **Total: 45 tests, all passing**
-
-## Next Steps (Requires User)
-
-### To Complete Rules API:
-1. Open Monarch Money web app in browser
-2. Open DevTools → Network tab
-3. Navigate to Settings → Rules or create a new rule
-4. Copy the GraphQL requests/responses for:
-   - Listing rules
-   - Creating a rule
-   - Updating a rule
-   - Deleting a rule
-5. Share with Claude for implementation
+- `tests/test_rules.py` - 12 tests
+- **Total: 57 tests, all passing**
 
 ## Files Changed
-- `src/monarch_mcp_server/server.py` - Main server with 14 new tools
+- `src/monarch_mcp_server/server.py` - Main server with 18 new tools
 - `tests/test_categories.py` - Category tool tests
 - `tests/test_tags.py` - Tag tool tests
 - `tests/test_transactions.py` - Transaction tool tests
+- `tests/test_rules.py` - Rules tool tests
 - `CLAUDE.md` - Development guide
 - `STATUS.md` - This file
 
 ## Ready for PR
-All completed tools are ready for PR review. Consider splitting into:
-1. PR #1: Category tools (get_categories, get_category_groups)
-2. PR #2: Transaction review tools (get_transactions_needing_review, set_transaction_category, update_transaction_notes, mark_transaction_reviewed)
-3. PR #3: Bulk operations (bulk_categorize_transactions)
-4. PR #4: Tag tools (get_tags, set_transaction_tags, create_tag)
-5. PR #5: Advanced tools (search_transactions, get_transaction_details, delete_transaction, get_recurring_transactions)
+All tools implemented and tested. Consider splitting into multiple PRs:
+
+1. **PR #1: Core Review Workflow**
+   - get_categories, get_category_groups
+   - get_transactions_needing_review
+   - set_transaction_category, update_transaction_notes, mark_transaction_reviewed
+
+2. **PR #2: Bulk Operations & Tags**
+   - bulk_categorize_transactions
+   - get_tags, set_transaction_tags, create_tag
+
+3. **PR #3: Advanced Search & Management**
+   - search_transactions, get_transaction_details
+   - delete_transaction, get_recurring_transactions
+
+4. **PR #4: Transaction Rules (Experimental)**
+   - get_transaction_rules
+   - create_transaction_rule, update_transaction_rule, delete_transaction_rule
+   - Note: Uses reverse-engineered API
+
+## Usage Examples
+
+### Review and categorize transactions
+```
+1. get_transactions_needing_review(needs_review=True, days=7)
+2. get_categories()  # See available categories
+3. set_transaction_category(transaction_id="...", category_id="...")
+```
+
+### Create auto-categorization rule
+```
+create_transaction_rule(
+    merchant_criteria_operator="contains",
+    merchant_criteria_value="amazon",
+    set_category_id="cat_shopping",
+    add_tag_ids=["tag_online"]
+)
+```
+
+### Bulk categorize similar transactions
+```
+bulk_categorize_transactions(
+    transaction_ids=["txn_1", "txn_2", "txn_3"],
+    category_id="cat_groceries"
+)
+```
