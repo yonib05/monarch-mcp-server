@@ -14,8 +14,12 @@ from mcp.server.auth.provider import AccessTokenT
 from mcp.server.fastmcp import FastMCP
 import mcp.types as types
 from monarchmoney import MonarchMoney, RequireMFAException
+from monarchmoney.monarchmoney import MonarchMoneyEndpoints
 from pydantic import BaseModel, Field
 from monarch_mcp_server.secure_session import secure_session
+
+# Patch MonarchMoney to use new API domain (monarch.com instead of monarchmoney.com)
+MonarchMoneyEndpoints.BASE_URL = "https://api.monarch.com"
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
