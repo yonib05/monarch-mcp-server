@@ -5,9 +5,9 @@
 ## Current Phase: ALL PHASES COMPLETE ✅
 
 ## Summary
-- **Total New Tools Added:** 18
+- **Total New Tools Added:** 19
 - **Total Tests:** 57 (all passing)
-- **Commits:** 8
+- **Commits:** 10
 
 ## Completed Tools
 
@@ -41,6 +41,11 @@
 | `update_transaction_rule` | ✅ Complete | Modify existing rule |
 | `delete_transaction_rule` | ✅ Complete | Remove a rule |
 
+### Authentication ✅
+| Tool | Status | Description |
+|------|--------|-------------|
+| `authenticate_with_google` | ✅ Complete | Browser-based Google OAuth, auto-captures token |
+
 ## Commits Made
 | # | Commit | Description |
 |---|--------|-------------|
@@ -52,6 +57,8 @@
 | 6 | f94332e | Add search_transactions, get_transaction_details, delete_transaction, get_recurring_transactions |
 | 7 | 1d8b3d2 | Update STATUS.md with implementation progress |
 | 8 | c08e531 | Add transaction rules API tools (reverse-engineered) |
+| 9 | 3773016 | Add Google OAuth login support (google_login.py) |
+| 10 | 48c6935 | Add authenticate_with_google MCP tool |
 
 ## Test Coverage
 - `tests/test_categories.py` - 6 tests
