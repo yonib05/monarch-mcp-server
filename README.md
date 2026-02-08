@@ -98,6 +98,12 @@ Once authenticated, use these tools directly in Claude Desktop:
 - **Get Categories**: List all transaction categories with groups, icons, and metadata
 - **Get Category Groups**: View category groups with their associated categories
 
+### 📋 Transaction Review
+- **Get Transactions Needing Review**: Find transactions that need attention (uncategorized, no notes, flagged)
+- **Set Transaction Category**: Assign a category to a transaction
+- **Update Transaction Notes**: Add or update notes on transactions (great for receipt links)
+- **Mark Transaction Reviewed**: Clear the needs_review flag on transactions
+
 ### 📈 Financial Analysis
 - **Get Budgets**: Access budget information including spent amounts and remaining balances
 - **Get Cashflow**: Analyze financial cashflow over specified date ranges with income/expense breakdowns
@@ -124,6 +130,10 @@ Once authenticated, use these tools directly in Claude Desktop:
 | `refresh_accounts` | Request account data refresh | None |
 | `get_categories` | List all transaction categories | None |
 | `get_category_groups` | List category groups with categories | None |
+| `get_transactions_needing_review` | Get transactions needing review | `needs_review`, `days`, `uncategorized`, `no_notes` |
+| `set_transaction_category` | Set category on a transaction | `transaction_id`, `category_id`, `mark_reviewed` |
+| `update_transaction_notes` | Update notes on a transaction | `transaction_id`, `notes` |
+| `mark_transaction_reviewed` | Mark transaction as reviewed | `transaction_id` |
 
 ## 📝 Usage Examples
 
@@ -150,6 +160,11 @@ Get my cashflow for the last 3 months using get_cashflow
 ### List Available Categories
 ```
 Show me all available categories using get_categories
+```
+
+### Review Uncategorized Transactions
+```
+Show me transactions from the last 7 days that need review using get_transactions_needing_review
 ```
 
 ## 📅 Date Formats
