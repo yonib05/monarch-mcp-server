@@ -107,6 +107,11 @@ Once authenticated, use these tools directly in Claude Desktop:
 ### 📦 Bulk Operations
 - **Bulk Categorize Transactions**: Apply a category to multiple transactions at once
 
+### 🔖 Tag Management
+- **Get Tags**: List all available tags with colors and usage counts
+- **Set Transaction Tags**: Apply tags to a transaction
+- **Create Tag**: Create a new tag with custom name and color
+
 ### 📈 Financial Analysis
 - **Get Budgets**: Access budget information including spent amounts and remaining balances
 - **Get Cashflow**: Analyze financial cashflow over specified date ranges with income/expense breakdowns
@@ -138,6 +143,9 @@ Once authenticated, use these tools directly in Claude Desktop:
 | `update_transaction_notes` | Update notes on a transaction | `transaction_id`, `notes` |
 | `mark_transaction_reviewed` | Mark transaction as reviewed | `transaction_id` |
 | `bulk_categorize_transactions` | Categorize multiple transactions | `transaction_ids`, `category_id` |
+| `get_tags` | List all tags | None |
+| `set_transaction_tags` | Set tags on a transaction | `transaction_id`, `tag_ids` |
+| `create_tag` | Create a new tag | `name`, `color` |
 
 ## 📝 Usage Examples
 
@@ -174,6 +182,11 @@ Show me transactions from the last 7 days that need review using get_transaction
 ### Bulk Categorize Transactions
 ```
 Categorize these three transactions as "Groceries" using bulk_categorize_transactions
+```
+
+### Tag a Transaction
+```
+Add the "Tax Deductible" tag to this transaction using set_transaction_tags
 ```
 
 ## 📅 Date Formats
