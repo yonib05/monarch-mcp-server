@@ -139,8 +139,11 @@ Once authenticated, use these tools directly in Claude Desktop:
 - **Get Transaction Splits**: View how a transaction has been split into parts
 - **Split Transaction**: Divide a single transaction into multiple parts with different categories or merchants
 
+### 💵 Budget Management
+- **Get Budgets**: Access budget information including spent amounts and remaining balances by category
+- **Set Budget Amount**: Create or modify budget amounts for any category or category group
+
 ### 📈 Financial Analysis
-- **Get Budgets**: Access budget information including spent amounts and remaining balances
 - **Get Cashflow**: Analyze financial cashflow over specified date ranges with income/expense breakdowns
 
 ### 🔐 Secure Authentication
@@ -159,7 +162,8 @@ Once authenticated, use these tools directly in Claude Desktop:
 | `check_auth_status` | Check authentication status | None |
 | `get_accounts` | Get all financial accounts | None |
 | `get_transactions` | Get transactions with filtering | `limit`, `offset`, `start_date`, `end_date`, `account_id` |
-| `get_budgets` | Get budget information | None |
+| `get_budgets` | Get budget information | `start_date`, `end_date` |
+| `set_budget_amount` | Set budget for a category | `amount`, `category_id`, `category_group_id`, `start_date`, `apply_to_future` |
 | `get_cashflow` | Get cashflow analysis | `start_date`, `end_date` |
 | `get_account_holdings` | Get investment holdings | `account_id` |
 | `create_transaction` | Create new transaction | `account_id`, `amount`, `description`, `date`, `category_id`, `merchant_name` |
@@ -201,6 +205,16 @@ Show me my last 50 transactions using get_transactions with limit 50
 ### Check Spending vs Budget
 ```
 Use get_budgets to show my current budget status
+```
+
+### Set a Budget Amount
+```
+Set my grocery budget to $600 for this month using set_budget_amount
+```
+
+### Apply Budget to All Future Months
+```
+Set my entertainment budget to $150 and apply it to all future months using set_budget_amount with apply_to_future=true
 ```
 
 ### Analyze Cash Flow
