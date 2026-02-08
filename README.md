@@ -118,6 +118,12 @@ Once authenticated, use these tools directly in Claude Desktop:
 - **Delete Transaction**: Remove a transaction
 - **Get Recurring Transactions**: View upcoming recurring transactions
 
+### 🤖 Transaction Rules (Auto-Categorization)
+- **Get Transaction Rules**: List all auto-categorization rules
+- **Create Transaction Rule**: Create rules with merchant/amount conditions to auto-categorize
+- **Update Transaction Rule**: Modify existing rules
+- **Delete Transaction Rule**: Remove a rule
+
 ### 📈 Financial Analysis
 - **Get Budgets**: Access budget information including spent amounts and remaining balances
 - **Get Cashflow**: Analyze financial cashflow over specified date ranges with income/expense breakdowns
@@ -156,6 +162,10 @@ Once authenticated, use these tools directly in Claude Desktop:
 | `get_transaction_details` | Get details of a transaction | `transaction_id` |
 | `delete_transaction` | Delete a transaction | `transaction_id` |
 | `get_recurring_transactions` | Get recurring transactions | None |
+| `get_transaction_rules` | List auto-categorization rules | None |
+| `create_transaction_rule` | Create an auto-categorization rule | `merchant_criteria_operator`, `merchant_criteria_value`, `set_category_id`, `add_tag_ids`, `amount_operator`, `amount_value` |
+| `update_transaction_rule` | Update an existing rule | `rule_id`, `merchant_criteria_operator`, `merchant_criteria_value`, `set_category_id` |
+| `delete_transaction_rule` | Delete a rule | `rule_id` |
 
 ## 📝 Usage Examples
 
@@ -207,6 +217,11 @@ Find all Amazon transactions over $50 from the last month using search_transacti
 ### View Recurring Bills
 ```
 Show me my upcoming recurring transactions using get_recurring_transactions
+```
+
+### Create Auto-Categorization Rule
+```
+Create a rule to automatically categorize Amazon transactions as "Shopping" using create_transaction_rule
 ```
 
 ## 📅 Date Formats
