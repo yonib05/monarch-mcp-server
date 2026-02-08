@@ -104,6 +104,9 @@ Once authenticated, use these tools directly in Claude Desktop:
 - **Update Transaction Notes**: Add or update notes on transactions (great for receipt links)
 - **Mark Transaction Reviewed**: Clear the needs_review flag on transactions
 
+### 📦 Bulk Operations
+- **Bulk Categorize Transactions**: Apply a category to multiple transactions at once
+
 ### 📈 Financial Analysis
 - **Get Budgets**: Access budget information including spent amounts and remaining balances
 - **Get Cashflow**: Analyze financial cashflow over specified date ranges with income/expense breakdowns
@@ -134,6 +137,7 @@ Once authenticated, use these tools directly in Claude Desktop:
 | `set_transaction_category` | Set category on a transaction | `transaction_id`, `category_id`, `mark_reviewed` |
 | `update_transaction_notes` | Update notes on a transaction | `transaction_id`, `notes` |
 | `mark_transaction_reviewed` | Mark transaction as reviewed | `transaction_id` |
+| `bulk_categorize_transactions` | Categorize multiple transactions | `transaction_ids`, `category_id` |
 
 ## 📝 Usage Examples
 
@@ -165,6 +169,11 @@ Show me all available categories using get_categories
 ### Review Uncategorized Transactions
 ```
 Show me transactions from the last 7 days that need review using get_transactions_needing_review
+```
+
+### Bulk Categorize Transactions
+```
+Categorize these three transactions as "Groceries" using bulk_categorize_transactions
 ```
 
 ## 📅 Date Formats
