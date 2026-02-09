@@ -69,3 +69,6 @@ from monarch_mcp_server.tools.financial import (  # noqa: F401
     get_net_worth,
     get_net_worth_by_account_type,
 )
+
+if __name__ == "__main__":
+    main()
